@@ -13,6 +13,7 @@ const FileUpload = () => {
         fd.append('cloud_name', 'dz62zsfp2')
 
         axios.post('https://api.cloudinary.com/v1_1/dz62zsfp2/image/upload', fd)
+        axios.post('https://api.cloudinary.com/v1_1/dz62zsfp2/image/upload', fd)
         .then((result) => {
             toast.success('File Upload Successfully')
             console.log(result.data);

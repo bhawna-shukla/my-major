@@ -23,7 +23,7 @@ const Service = () => {
       <div className="max-w-3xl text-center mx-auto">
         <p className="text-xl text-blue-600 font-[Oswald]">
           
-Services are intangible products or activities provided by a business to meet the needs of customers, offering value through performance, expertise, or assistance rather than a physical product.
+      Services are intangible products or activities provided by a business to meet the needs of customers, offering value through performance, expertise, or assistance rather than a physical product.
         </p>
       </div>
       {/* Buttons */}
@@ -79,7 +79,7 @@ Services are intangible products or activities provided by a business to meet th
           <h1 className='m-2 ml-5  text-6xl  text-blue-800 font-bold  '>Managing</h1>
           <p className='ml-5 mr-8 text-lg text-gray-800 font-serif'>These services can be offered across various industries and sectors, including business, healthcare, technology, finance and more.</p>
           <a className=' flex justify-center mt-9  ml-4 w-72 border-2 p-2 rounded-xl text-lg text-white bg-blue-900  hover:bg-blue-500'
-          href='/user/managing'>Click Here</a>
+          href='/browsemanaging'>Click Here</a>
      
           </div>
           <div className="w-full md:w-1/2 py-1">
@@ -103,7 +103,7 @@ Services are intangible products or activities provided by a business to meet th
           <h1 className='m-2 ml-5  text-6xl  text-sky-500 font-bold  '>Launching</h1>
           <p className='ml-5 mr-3 text-lg text-gray-800 font-serif'>These services are designed to ensure a successful and smooth launch by planning, executing, and managing various aspects of the launch process.</p>
            <a className=' flex justify-center mt-9 ml-4 w-72 border-2 p-2 rounded-xl text-lg text-white bg-sky-500  hover:bg-sky-300'
-           href='/user/launching'>Click Here</a>
+           href='/browselaunching'>Click Here</a>
      
           </div>
           {/* <div className="w-full md:w-1/2 py-1">

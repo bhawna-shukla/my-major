@@ -9,7 +9,7 @@ const View = () => {
   const [productList, setProductList] = useState([]);
 
   const getProductData = async () => {
-    const res = await fetch("http://localhost:5000/product1/getbyid/" + id);
+    const res = await fetch("http://localhost:5000/service/getbyid/" + id);
     console.log(res.status);
 
     const data = await res.json();

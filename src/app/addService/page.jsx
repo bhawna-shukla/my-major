@@ -4,15 +4,15 @@ import { useFormik } from "formik";
 import toast from "react-hot-toast";
 import axios from 'axios'
 
-const Addplanning = () => {
+const AddService = () => {
 
-  const product1Form = useFormik({
+  const productForm = useFormik({
 
     initialValues: {
-      filename: "",
-      title:"",
+      name: "",
+      content:"",
       image: " ",
-      category: "",
+      servicecategory: "",
       description: "",
       
 
@@ -20,7 +20,7 @@ const Addplanning = () => {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       axios
-        .post("http://localhost:5000/product1/add", values)
+        .post("http://localhost:5000/service/add", values)
         .then((response) => {
           console.log(response.status);
           resetForm();
@@ -36,10 +36,10 @@ const Addplanning = () => {
     <div>
       <div className=" mx-auto max-w-xl py-9 lg:px-24 border rounded-lg shadow-sm mt-2 mb-2">
         <h1 className="  text-3xl font-semibold text-gray-700 text-center mb-2 ">
-          Add Libraray
+          Add Services
         </h1>
 
-        <form onSubmit={product1Form.handleSubmit}>
+        <form onSubmit={productForm.handleSubmit}>
           <div className=" shadow-lg px-8 border border-black rounded-lg pt-5 pb-6 mb-2  flex flex-col">
             <div className="-mx-4 md:flex mb-2">
               <div className="md:w-1/2 px-3 mb-6 md:mb-0">
@@ -47,11 +47,11 @@ const Addplanning = () => {
                   className=" text-xl font-semibold mb-2"
                   htmlFor="company"
                 >
-                 File Name
+                 Name
                 </label>
-                {product1Form.errors.filename && product1Form.touched.filename ? (
+                {productForm.errors.name && productForm.touched.name ? (
                   <div className="text-red-500 text-sm">
-                    {product1Form.errors.filename}
+                    {productForm.errors.name}
                   </div>
                 ) : null}
 
@@ -59,19 +59,19 @@ const Addplanning = () => {
                   className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
                   type="text"
                   placeholder=""
-                  id="filename"
-                  onChange={product1Form.handleChange}
-                  value={product1Form.values.filename}
+                  id="name"
+                  onChange={productForm.handleChange}
+                  value={productForm.values.name}
                 />
-                <div></div>
+                
               </div>
               <div className="md:w-1/2 px-3">
                 <label className=" text-xl font-semibold mb-2" htmlFor="title">
-                 Title
+                 Content
                 </label>
-                {product1Form.errors.titlee && product1Form.touched.title ? (
+                {productForm.errors.content && productForm.touched.content ? (
                   <div className="text-red-500 text-sm">
-                    {product1Form.errors.title}
+                    {productForm.errors.title}
                   </div>
                 ) : null}
 
@@ -80,31 +80,12 @@ const Addplanning = () => {
 
                   type="text"
                   placeholder=""
-                  id="title"
-                  onChange={product1Form.handleChange}
-                  value={product1Form.values.title}
+                  id="content"
+                  onChange={productForm.handleChange}
+                  value={productForm.values.content}
                 />
               </div>
-              <div className="md:w-1/2 px-3">
-                <label className=" text-xl font-semibold mb-2" htmlFor="title">
-                 Tag
-                </label>
-                {product1Form.errors.tag && product1Form.touched.tag ? (
-                  <div className="text-red-500 text-sm">
-                    {product1Form.errors.tag}
-                  </div>
-                ) : null}
-
-                <input
-                  className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
-
-                  type="text"
-                  placeholder=""
-                  id="tag"
-                  onChange={product1Form.handleChange}
-                  value={product1Form.values.tag}
-                />
-              </div>
+              
             </div>
             <div className="-mx-4 md:flex mb-6">
               <div className="md:w-full px-3">
@@ -112,21 +93,21 @@ const Addplanning = () => {
                   className=" text-xl font-semibold mb-2"
                   htmlFor="application-link"
                 >
-                  Category
+                 Service Category
                 </label>
-                {product1Form.errors.category &&
-                product1Form.touched.category ? (
+                {productForm.errors.servicecategory &&
+                productForm.touched.servicecategory ? (
                   <div className="text-red-500 text-sm">
-                    {product1Form.errors.category}
+                    {productForm.errors.servicecategory}
                   </div>
                 ) : null}
                 <input
                   className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
                   type="text"
                   placeholder=""
-                  id="category"
-                  onChange={product1Form.handleChange}
-                  value={product1Form.values.category}
+                  id="servicecategory"
+                  onChange={productForm.handleChange}
+                  value={productForm.values.servicecategory}
                 />
               </div>
               <div className="-mx-4 md:flex mb-6">
@@ -137,10 +118,10 @@ const Addplanning = () => {
                 >
                   Description
                 </label>
-                {product1Form.errors.description &&
-                product1Form.touched.description ? (
+                {productForm.errors.description &&
+                productForm.touched.description ? (
                   <div className="text-red-500 text-sm">
-                    {product1Form.errors.description}
+                    {productForm.errors.description}
                   </div>
                 ) : null}
                 <input
@@ -148,8 +129,8 @@ const Addplanning = () => {
                   type="text"
                   placeholder=""
                   id="description"
-                  onChange={product1Form.handleChange}
-                  value={product1Form.values.description}
+                  onChange={productForm.handleChange}
+                  value={productForm.values.description}
                 />
               </div>
             </div>
@@ -168,8 +149,8 @@ const Addplanning = () => {
               <div className="mt-2">
                 <input  
                   id="image"
-                  value={product1Form.values.image}
-                  onChange={product1Form.handleChange}
+                  value={productForm.values.image}
+                  onChange={productForm.handleChange}
                   type="text"
                   autoComplete="category"
                   required=""
@@ -191,4 +172,4 @@ const Addplanning = () => {
   );
 };
 
-export default Addplanning;
+export default AddService;
