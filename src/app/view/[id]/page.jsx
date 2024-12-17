@@ -31,15 +31,15 @@ const View = () => {
             <div className=" ">
               <div className="row my-5  m-10  ">
                 {/* <div className="col-md-4 w-full  "> */}
-                  <img src={productList.image} alt="" className="img-fluid ms-3 ml-24  border rounded-xl border-gray-700  border:shadow-gray-900" style={{ height: "1000px",width : "" }} />
+                  {/* <img src={productList.image} alt="" className="img-fluid ms-3 ml-24  border rounded-xl border-gray-700  border:shadow-gray-900" style={{ height: "1000px",width : "" }} /> */}
                  
-              <h1 className='flex justify-center m-10 p-2 text-6xl text-indigo-900  font-[sans-serief]'> {productList.filename}</h1>
+              <h1 className='flex justify-center m-10 p-2 text-6xl text-indigo-900  font-[sans-serief]'> {productList.name}</h1>
                 {/* </div> */}
                 {/* <button className=" m-6 ml-10  border rounded-lg bg-gray-900 text-white hover:bg-blue-900 p-4">Use Templates</button> */}
                 <div className="col-md-6">
-                  <h1 className='py-3 ml-8 text-6xl text-gray-900 font-[geoge]'> {productList.title}</h1>
+                  <h1 className='py-3 ml-8 text-xl text-gray-900 font-[geoge]'> {productList.content}</h1>
                   <h1 className=' font-semibold text-blue-900 ml-8  text-xl'> {productList.tag} </h1>
-                  <h1 className='    mt-9  ml-8 font-[mono] text-3xl'> {productList.category}</h1>
+                  {/* <h1 className='    mt-9  ml-8 font-[mono] text-3xl'> {productList.servicecategory}</h1> */}
                   {/* <h1 className='fw-bold ' style={{ color: "teal", fontFamily: "initial" }}> <i className="bi bi-currency-rupee fw-bold "></i>{productList.price}</h1> */}
                   <p className='py-3  ml-8   text-xl'> {productList.description}</p>
 
