@@ -39,7 +39,7 @@ const View = () => {
                 <div className="col-md-6">
                   <h1 className='py-3 ml-8 text-xl text-gray-900 font-[geoge]'> {productList.content}</h1>
                   <h1 className=' font-semibold text-blue-900 ml-8  text-xl'> {productList.tag} </h1>
-                  {/* <h1 className='    mt-9  ml-8 font-[mono] text-3xl'> {productList.servicecategory}</h1> */}
+                  <h1 className='    mt-9  ml-8 font-[mono] text-3xl'> {productList.servicecategory}</h1>
                   {/* <h1 className='fw-bold ' style={{ color: "teal", fontFamily: "initial" }}> <i className="bi bi-currency-rupee fw-bold "></i>{productList.price}</h1> */}
                   <p className='py-3  ml-8   text-xl'> {productList.description}</p>
 

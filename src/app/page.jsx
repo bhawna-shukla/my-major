@@ -1135,7 +1135,7 @@ const Page = () => {
                           xlinkHref="#a"
                         />
                       </svg>
-                      中文 (繁體)
+                     
                     </a>
                   </div>
                 </div>

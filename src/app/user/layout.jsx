@@ -1,8 +1,8 @@
 "use client"
 import localFont from "next/font/local";
-import "./globals.css";
-// import Navbar from "./navbar";
-import { AppProvider } from "../contex/appContex";
+// import "./globals.css";
+import Navbar from "./navbar";
+// import { AppProvider } from "../contex/appContex";
 import { Toaster,ToastBar } from "react-hot-toast";
 
 // const geistSans = localFont({
@@ -27,8 +27,8 @@ export default function RootLayout({ children }) {
       <body
         
       > 
-      <AppProvider>
-      {/* <Navbar /> */}
+      {/* <AppProvider> */}
+      <Navbar />
       <Toaster>
           {(t) => (
             <ToastBar
@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
           )}
         </Toaster>
         {children}
-        </AppProvider>
+        {/* </AppProvider> */}
       </body>
     </html>
   );

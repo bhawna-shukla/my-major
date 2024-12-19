@@ -6,7 +6,7 @@ const Contact = () => {
     <div className='bg-slate-50 min-h-screen  flex items-center justift-center'>
         <>
   {/* Contact Us */}
-  <div className="max-w-[85rem] mt-6 px-4 py-10 bg-  border-2 shadow-lg shadow-blue-300 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div className=" bg-slate-300 max-w-[85rem] mt-5 px-4 py-10 bg-  border-2 shadow-lg shadow-gray-800 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <div className="max-w-2xl lg:max-w-5xl mx-auto">
       <div className="text-center">
         <h1 className="text-3xl  text-blue-600 font-[sans-serif] sm:text-4xl">
