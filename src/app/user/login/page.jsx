@@ -1,30 +1,71 @@
 "use client"
 import React from 'react'
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Please enter a valid email address")
+    .required("Email is required"),
+
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+});
+
+
+
 
 const Login = () => {
+  const router = useRouter();
+  const loginForm = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: (values, { resetForm }) => {
+      console.log(values);
+      axios
+        .post("http://localhost:5000/user/add", values)
+        .then((response) => {
+          console.log(response.status);
+          resetForm();
+          toast.success("Login Successfully");
+          router.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Failed to Login");
+        });
+    },
+    validationSchema: LoginSchema,
+  });
   return (
     <div className=''>
 
-<div className="flex w-full mt-24 max-w-sm mx-auto overflow-hidden bg-sky-500  rounded-lg shadow-lg shadow-blue-950 lg:max-w-4xl">
-  <div
-    className="hidden bg-cover lg:block lg:w-2/3"
-    style={{
-      backgroundImage:
-        'url("https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo=")'
-    }}
-  />
-  <div className="w-full mt-7  px-6 py-8 md:px-8 lg:w-1/2">
-    <div className="flex justify-center mx-auto">
-      {/* <img
+      <div className="flex w-full mt-24 max-w-sm mx-auto overflow-hidden bg-sky-500  rounded-lg shadow-lg shadow-blue-950 lg:max-w-4xl">
+        <div
+          className="hidden bg-cover lg:block lg:w-2/3"
+          style={{
+            backgroundImage:
+              'url("https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo=")'
+          }}
+        />
+        <div className="w-full mt-7  px-6 py-8 md:px-8 lg:w-1/2">
+          <div className="flex justify-center mx-auto">
+            {/* <img
         className="w-auto h-7 sm:h-8"
         src="https://e7.pngegg.com/pngimages/549/560/png-clipart-computer-icons-login-scalable-graphics-email-accountability-blue-logo.png"
         alt=""
       /> */}
-    </div>
-    <p className="mt-3 text-6xl font-sans font-bold text-center text-white ">
-      Welcome back!
-    </p>
-    {/* <a
+          </div>
+          <p className="mt-3 text-6xl font-sans font-bold text-center text-white ">
+            Welcome back!
+          </p>
+          {/* <a
       href="#"
       className="flex items-center justify-center mt-4 text-gray-600 "
     >
@@ -52,7 +93,7 @@ const Login = () => {
         Sign in with Google
       </span>
     </a> */}
-    {/* <div className="flex items-center justify-between mt-4">
+          {/* <div className="flex items-center justify-between mt-4">
       <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4" />
       <a
         href="#"
@@ -62,46 +103,58 @@ const Login = () => {
       </a>
       <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4" />
     </div> */}
-    <div className="mt-7">
-      <label
-        className="block mb-2 text-lg font-medium font-serif text-white"
-        htmlFor="LoggingEmailAddress"
-      >
-        Email Address
-      </label>
-      <input
-        id="LoggingEmailAddress"
-        className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg "
-        type="email"
-      />
-    </div>
-    <div className="mt-4">
-      <div className="flex justify-between">
-        <label
-          className="block mb-2 text-lg  font-serif text-white "
-          htmlFor="loggingPassword"
-        >
-          Password
-        </label>
-        <a
-          href="#"
-          className="text-xs text-white underline hover:text-blue-900 "
-        >
-          Forget Password?
-        </a>
-      </div>
-      <input
-        id="loggingPassword"
-        className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg "
-        type="password"
-      />
-    </div>
-    <div className="mt-6">
-      <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-        Sign In
-      </button>
-    </div>
-    {/* <div className="flex items-center justify-between mt-4">
+          <form onSubmit={loginForm.handleSubmit}>
+            <div className="mt-7">
+              <label
+                className="block mb-2 text-lg font-medium font-serif text-white"
+                htmlFor="LoggingEmailAddress"
+              >
+                Email Address
+              </label>
+              {loginForm.errors.email && loginForm.touched.email ? (
+                <div className="text-red-500 text-sm">
+                  {loginForm.errors.email}
+                </div>
+              ) : null}
+              <input
+                id="email"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg "
+                type="email"
+                onChange={loginForm.handleChange}
+                value={loginForm.values.email}
+              />
+            </div>
+            <div className="mt-4">
+              
+                <label
+                  className="block mb-2 text-lg  font-serif text-white "
+                  htmlFor="loggingPassword"
+                >
+                  Password
+                </label>
+                {loginForm.errors.password && loginForm.touched.password ? (
+                <div className="text-red-500 text-sm">
+                  {loginForm.errors.password}
+                </div>
+              ) : null}
+
+                <input
+                  id="password"
+                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg "
+                  type="password"
+                  onChange={loginForm.handleChange}
+                  value={loginForm.values.password}
+                />
+             
+              </div>
+          
+          <div className="mt-6">
+            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+              Sign In
+            </button>
+          </div>
+          </form>
+          {/* <div className="flex items-center justify-between mt-4">
       <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4" />
       <a
         href="#"
@@ -111,10 +164,11 @@ const Login = () => {
       </a>
       <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4" />
     </div> */}
-  </div>
-</div>
+        </div>
+      </div>
 
     </div>
+
   )
 }
 
