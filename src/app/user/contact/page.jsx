@@ -29,7 +29,8 @@ const Contact = () => {
   const router = useRouter();
   const contactForm = useFormik({
     initialValues: {
-      name: "",
+      firstname: "",
+      lastname: "",
       email: "",
       phone: "",
       detail:"",
@@ -87,7 +88,7 @@ const Contact = () => {
                 ) : null}
                   <input
                     type="text"
-                    name="hs-firstname-contacts-1"
+                  
                     id="firstname"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                     placeholder="First Name"
@@ -106,7 +107,7 @@ const Contact = () => {
                 ) : null}
                   <input
                     type="text"
-                    name="hs-lastname-contacts-1"
+                    
                     id="lastname"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                     placeholder="Last Name"
@@ -147,8 +148,8 @@ const Contact = () => {
                 ) : null}
                 <input
                   type="text"
-                  name="hs-phone-number-1"
-                  id="hs-phone-number-1"
+                  
+                  id=""
                   className="py-3 px-4 block w-full border-gray-200 rounded-lg text-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Phone Number"
                   onChange={contactForm.handleChange}

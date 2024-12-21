@@ -40,7 +40,8 @@ const Signup = () => {
   const router = useRouter();
   const signUpForm = useFormik({
     initialValues: {
-      name: "",
+      firstname: "",
+      lastname:"",
       email: "",
       password: "",
       phone: "",

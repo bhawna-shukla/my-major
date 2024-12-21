@@ -139,7 +139,7 @@ const Sidebar = () => {
                   
                   <Link
                     className="flex items-center gap-x-3.5 py-2 px-2.5 bg-white/10 text-sm text-white rounded-lg hover:bg-white/10 focus:outline-none focus:bg-white/10"
-                    href="/admine/dashboard"
+                    href="/admin/dashboard"
                   >
                     <svg
                       className="shrink-0 size-4"
@@ -630,7 +630,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     className="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-white/10"
-                    href="/admine/manageuser"
+                    href="/admin/manageUser"
                   >
                     <svg
                       className="shrink-0 size-4"
