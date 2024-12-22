@@ -8,7 +8,7 @@ const Launching= () => {
   const [product, setProduct] = useState([]);
 
   const fetchProduct = async () => {
-    const res = await fetch("http://localhost:5000/services/getbycategory/launching");
+    const res = await fetch("http://localhost:5000/service/getbycategory/launching");
 
     console.log(res.status);
 

@@ -1,176 +1,82 @@
-"use client";
-import React from "react";
-import { useFormik } from "formik";
+'use client'
+import React from 'react'
+// import addservice from '../assets/addservice.png'
+import MDEditor from '@uiw/react-md-editor';
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import toast from "react-hot-toast";
-import axios from 'axios'
+import { useRouter } from "next/navigation";
 
-const AddService = () => {
 
-  const productForm = useFormik({
+const AddServicesSchema = Yup.object().shape({});
 
+
+const AddServices = () => {
+  const router = useRouter();
+
+  // const [selFile, setSelFile] = useState("");
+
+  const [markdownContent, setMarkdownContent] = useState("*Add Services*");
+
+  const addServiceForm = useFormik({
     initialValues: {
-      name: "",
-      content:"",
-      image: " ",
-      servicecategory: "",
-      description: "",
-      
-
+      name: '',
+      servicecategory: '',
+      description: '',
+      image: '',
+      content: ""
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, action) => {
+      // values.simage = selFile;
+      values.content = markdownContent;
       console.log(values);
-      axios
-        .post("http://localhost:5000/service/add", values)
-        .then((response) => {
-          console.log(response.status);
-          resetForm();
-          toast.success("Product Added Successfully");
-         
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error("Failed to add Product");
-        });
+
+
+      const res = await fetch('http://localhost:5000/service/add', {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log(res.status);
+      action.resetForm();
+
+      if (res.status === 200) {
+        
+        toast.success("Login Successfully");
+        router.push("/services");
+      } else {
+        toast.error("Failed to add");
+        
+      }
     },
+    validationSchema: AddServicesSchema
   });
+
+
+
   return (
-    <div>
-      <div className=" mx-auto max-w-xl py-9 lg:px-24 border rounded-lg shadow-sm mt-2 mb-2">
-        <h1 className="  text-3xl font-semibold text-gray-700 text-center mb-2 ">
-          Add Services
-        </h1>
-
-        <form onSubmit={productForm.handleSubmit}>
-          <div className=" shadow-lg px-8 border border-black rounded-lg pt-5 pb-6 mb-2  flex flex-col">
-            <div className="-mx-4 md:flex mb-2">
-              <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                <label
-                  className=" text-xl font-semibold mb-2"
-                  htmlFor="company"
-                >
-                 Name
-                </label>
-                {productForm.errors.name && productForm.touched.name ? (
-                  <div className="text-red-500 text-sm">
-                    {productForm.errors.name}
-                  </div>
-                ) : null}
-
-                <input
-                  className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
-                  type="text"
-                  placeholder=""
-                  id="name"
-                  onChange={productForm.handleChange}
-                  value={productForm.values.name}
-                />
-                
-              </div>
-              <div className="md:w-1/2 px-3">
-                <label className=" text-xl font-semibold mb-2" htmlFor="title">
-                 Content
-                </label>
-                {productForm.errors.content && productForm.touched.content ? (
-                  <div className="text-red-500 text-sm">
-                    {productForm.errors.title}
-                  </div>
-                ) : null}
-
-                <input
-                  className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
-
-                  type="text"
-                  placeholder=""
-                  id="content"
-                  onChange={productForm.handleChange}
-                  value={productForm.values.content}
-                />
-              </div>
-              
-            </div>
-            <div className="-mx-4 md:flex mb-6">
-              <div className="md:w-full px-3">
-                <label
-                  className=" text-xl font-semibold mb-2"
-                  htmlFor="application-link"
-                >
-                 Service Category
-                </label>
-                {productForm.errors.servicecategory &&
-                productForm.touched.servicecategory ? (
-                  <div className="text-red-500 text-sm">
-                    {productForm.errors.servicecategory}
-                  </div>
-                ) : null}
-                <input
-                  className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
-                  type="text"
-                  placeholder=""
-                  id="servicecategory"
-                  onChange={productForm.handleChange}
-                  value={productForm.values.servicecategory}
-                />
-              </div>
-              <div className="-mx-4 md:flex mb-6">
-              <div className="md:w-full px-3">
-                <label
-                  className=" text-xl font-semibold mb-2"
-                  htmlFor="application-link"
-                >
-                  Description
-                </label>
-                {productForm.errors.description &&
-                productForm.touched.description ? (
-                  <div className="text-red-500 text-sm">
-                    {productForm.errors.description}
-                  </div>
-                ) : null}
-                <input
-                  className="w-full bg-gray-100 border rounded py-3 px-4 mb-3"
-                  type="text"
-                  placeholder=""
-                  id="description"
-                  onChange={productForm.handleChange}
-                  value={productForm.values.description}
-                />
-              </div>
-            </div>
-            </div>
-           
-           
-            
-            <div>
-              <label
-                style={{ fontFamily: "" }}
-                htmlFor="category"
-                className="text-xl font-semibold mb-2"
-              >
-                Image URL
-              </label>
-              <div className="mt-2">
-                <input  
-                  id="image"
-                  value={productForm.values.image}
-                  onChange={productForm.handleChange}
-                  type="text"
-                  autoComplete="category"
-                  required=""
-                  className=" w-full bg-gray-100 border rounded py-3 px-4 mb-3"
-                />
-              </div>
-            </div>
-            
-            <button
-              type="submit"
-              className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-lg font-semibold rounded-lg border border-transparent bg-blue-300 text-white hover:bg-sky-500 "
-            >
-              Add Product
-            </button>
-          </div>
-        </form>
+    <div className="card srv-card mt-5 w-50 d-flex mx-auto p-4">
+      <h1 className="text-center">Add Services</h1>
+      <div className='mt-5'>
+        <MDEditor value={markdownContent} onChange={(v) => setMarkdownContent(v)} />
       </div>
+      <form onSubmit={addServiceForm.handleSubmit}>
+        <p className='error-label'> {addServiceForm.touched.name && addServiceForm.errors.name}</p>
+        <input type="text" className="form-control mt-4 w-50" placeholder="Service Name" id="name" onChange={addServiceForm.handleChange} value={addServiceForm.values.name} />
+        <p className='error-label'> {addServiceForm.touched.servicecategory && addServiceForm.errors.servicecategory}</p>
+        <input type="text" className="form-control mt-4 w-50" placeholder="Service Category" id="servicecategory" onChange={addServiceForm.handleChange} value={addServiceForm.values.servicecategory} />
+        <p className='error-label'> {addServiceForm.touched.description && addServiceForm.errors.description}</p>
+        <input type="text" className="form-control mt-4 w-50" placeholder="Service Description" id="description" onChange={addServiceForm.handleChange} value={addServiceForm.values.description} />
+        <label htmlFor="file" className="form-label mt-4">Upload Image</label>
+        <input type="text" className="form-control w-50" placeholder="Upload Image" id="image" onChange={addServiceForm.handleChange} value={addServiceForm.values.image}/>
+        <button type="submit" className="btn btn-primary mt-4" onChange={addServiceForm.handleChange}>Add Service</button>
+      </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddService;
+export default AddServices

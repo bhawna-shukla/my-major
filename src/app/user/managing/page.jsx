@@ -8,7 +8,7 @@ const Managing = () => {
   const [product, setProduct] = useState([]);
 
   const fetchProduct = async () => {
-    const res = await fetch("http://localhost:5000/services/getbycategory/managing");
+    const res = await fetch("http://localhost:5000/service/getbycategory/managing");
 
     console.log(res.status);
 
