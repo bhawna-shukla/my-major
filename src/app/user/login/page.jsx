@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import useAppContex from '@/contex/appContex'
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -20,7 +21,9 @@ const LoginSchema = Yup.object().shape({
 
 
 const Login = () => {
-  const router = useRouter();
+
+  const { setLoggedIn, setCurrentUser } = useAppContex();
+  const router = useRouter()
   const loginForm = useFormik({
     initialValues: {
       email: "",
@@ -31,8 +34,10 @@ const Login = () => {
       axios
         .post("http://localhost:5000/user/add", values)
         .then((response) => {
-          console.log(response.status);
-          resetForm();
+          console.log(response.status)
+          localStorage.setItem('user', JSON.stringify(response.data))
+          setLoggedIn(true)
+          resetForm()
           toast.success("Login Successfully");
           router.push("/");
         })
@@ -125,34 +130,34 @@ const Login = () => {
               />
             </div>
             <div className="mt-4">
-              
-                <label
-                  className="block mb-2 text-lg  font-serif text-white "
-                  htmlFor="loggingPassword"
-                >
-                  Password
-                </label>
-                {loginForm.errors.password && loginForm.touched.password ? (
+
+              <label
+                className="block mb-2 text-lg  font-serif text-white "
+                htmlFor="loggingPassword"
+              >
+                Password
+              </label>
+              {loginForm.errors.password && loginForm.touched.password ? (
                 <div className="text-red-500 text-sm">
                   {loginForm.errors.password}
                 </div>
               ) : null}
 
-                <input
-                  id="password"
-                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg "
-                  type="password"
-                  onChange={loginForm.handleChange}
-                  value={loginForm.values.password}
-                />
-             
-              </div>
-          
-          <div className="mt-6">
-            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-              Sign In
-            </button>
-          </div>
+              <input
+                id="password"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg "
+                type="password"
+                onChange={loginForm.handleChange}
+                value={loginForm.values.password}
+              />
+
+            </div>
+
+            <div className="mt-6">
+              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                Sign In
+              </button>
+            </div>
           </form>
           {/* <div className="flex items-center justify-between mt-4">
       <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4" />

@@ -1,6 +1,7 @@
 "use client"
 import { UserCircleIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline'
 import React from 'react'
+
 import Link from 'next/link'
 import useAppContex from '@/contex/appContex'
 
@@ -134,10 +135,12 @@ const Page = () => {
 
                 <span className='text-purple-800 px-4'>Incubator</span> Support
               </h1>
+             
               <h2 className="mt-3 font-sans  text-3xl text-gray-800 dark:text-blue-600">
                 Join Our Business  Incubator <span className='text-purple-900 text-6xl font-serif'>Today,</span>
 
               </h2>
+             
               <div className="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
                 <div className="w-full sm:w-auto">
                   <button className=' border-purple-600  border-2 rounded-3xl border-opacity-45  flex  px-3 py-2 gap-2'>

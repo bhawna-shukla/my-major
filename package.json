@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
     "@heroicons/react": "^2.2.0",
     "@uiw/react-md-editor": "^4.0.5",
     "axios": "^1.7.7",
@@ -16,6 +17,7 @@
     "next": "15.0.3",
     "preline": "^2.5.1",
     "react": "19.0.0-rc-66855b96-20241106",
+    "react-awesome-reveal": "^4.3.1",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-hot-toast": "^2.4.1",
     "yup": "^1.4.0"
