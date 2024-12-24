@@ -93,17 +93,13 @@ const About = () => {
       <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
         <div className="w-full flex-col justify-center items-start gap-8 flex">
           <div className="flex-col justify-start lg:items-start items-center gap-4 flex">
-            <h6 className="text-gray-400 text-base font-normal leading-relaxed">
+            <h6 className="text-indigo-700 text-8xl font-bold font-manrope leading-normal lg:text-start text-center">
               About Us
             </h6>
             <div className="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-              <h2 className="text-indigo-700 text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
-                The Tale of Our Achievement Story
-              </h2>
+              
               <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                Our achievement story is a testament to teamwork and
-                perseverance. Together, we've overcome challenges, celebrated
-                victories, and created a narrative of progress and success.
+              Welcome to [Incubator Name], a leading business incubator dedicated to nurturing the next generation of entrepreneurs. Our mission is to empower startups and small businesses by providing the resources, guidance, and support they need to grow, innovate, and succeed. We aim to foster a dynamic ecosystem where aspiring founders can turn their ideas into viable, scalable businesses.
               </p>
             </div>
           </div>
@@ -146,27 +142,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <button className="sm:w-fit w-full group px-3.5 py-2 bg-indigo-50 hover:bg-indigo-100 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex">
-          <span className="px-1.5 text-indigo-600 text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out">
-            Read More
-          </span>
-          <svg
-            className="group-hover:translate-x-0.5 transition-all duration-700 ease-in-out"
-            xmlns="http://www.w3.org/2000/svg"
-            width={18}
-            height={18}
-            viewBox="0 0 18 18"
-            fill="none"
-          >
-            <path
-              d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996"
-              stroke="#4F46E5"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+       
       </div>
       <div className="w-full lg:justify-start justify-center items-start flex">
         <div className="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
@@ -182,14 +158,14 @@ const About = () => {
 </section>
   <>
   {/* Testimonials */}
-  <div className="mt-36 max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div className="mt-36 max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8  mx-auto">
     {/* Grid */}
     <div className="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center">
       <div className="hidden md:block mb-24 md:mb-0 sm:px-6">
         <div className="relative">
           <img
             className="rounded-xl"
-            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=500&h=600&q=80"
+            src="https://dumbquestions.co/wp-content/uploads/2016/09/sarablakely.jpg"
             alt="Avatar"
           />
           {/* SVG Element */}
@@ -276,11 +252,10 @@ const About = () => {
           </svg>
           <div className="relative z-10">
             <p className="text-xs font-semibold text-gray-500 tracking-wide uppercase mb-3">
-              Featured client
+              story of bussiness women
             </p>
             <p className="text-xl font-medium italic text-gray-800 md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal">
-              To say that switching to Preline has been life-changing is an
-              understatement. My business has tripled and I got my life back.
+            she is say's that, innovation, and a willingness to take risks can lead to extraordinary success, even when starting with nothing but an idea and hard work.
             </p>
           </div>
           <footer className="mt-6">
@@ -288,13 +263,14 @@ const About = () => {
               <div className="md:hidden shrink-0">
                 <img
                   className="size-12 rounded-full"
-                  src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                  src="https://dumbquestions.co/wp-content/uploads/2016/09/sarablakely.jpg"
                   alt="Avatar"
                 />
               </div>
               <div className="ms-4 md:ms-0">
                 <div className="text-base font-semibold text-gray-800">
-                  Nicole Grazioso
+                Sara Blakely
+
                 </div>
                 <div className="text-xs text-gray-500">
                   Director Payments &amp; Risk | Airbnb

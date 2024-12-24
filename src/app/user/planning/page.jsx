@@ -1,11 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 // import { useParams, Link } from "react-router-dom";
 // import classes from './template.module.css'
 
 const Planning = () => {
   const [product, setProduct] = useState([]);
+  const {category} = useParams()
 
   const fetchProduct = async () => {
     const res = await fetch("http://localhost:5000/service/getbycategory/planning");
@@ -14,9 +16,9 @@ const Planning = () => {
 
     const data = await res.json();
     console.log(data);
-    if (res.status === 200) {
-      // const data = await res.json();
-      console.log(data);
+    if (category) {
+      setProduct(data.filter((ser) => ser.category === category));
+    } else {
       setProduct(data);
     }
   };
@@ -27,27 +29,26 @@ const Planning = () => {
   const displayProduct = () => {
     return product.map((obj) => (
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <Link 
-         href={"/view/" + obj._id}>
+      
         <img
           className="p-8 rounded-t-lg"
           src={obj.image}
           alt=""
         />
-      </Link>
+     
       <div className="px-5 pb-5">
-        <Link
-         href={"/view/" + obj._name}>
+        
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
+            {obj.name}
           </h5>
-        </Link>
-        <a
-            href="#"
+          <p>{obj.description}</p>
+   
+        <Link
+            href={"/view/" + obj._id}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Add to cart
-          </a>
+            View
+          </Link>
         
       </div>
     </div>

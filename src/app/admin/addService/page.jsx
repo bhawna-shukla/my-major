@@ -59,7 +59,7 @@ const AddServices = () => {
 
 
   return (
-    <div className="card srv-card mt-5 w-50 d-flex mx-auto p-4">
+    <div className="card srv-card mt-5 w-1/2 d-flex mx-auto p-4">
       <h1 className="text-center">Add Services</h1>
       <div className='mt-5'>
         <MDEditor value={markdownContent} onChange={(v) => setMarkdownContent(v)} />
